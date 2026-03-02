@@ -1,155 +1,292 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
 
-:root {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
-	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
-	--box-shadow:
-		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%), 0 16px 32px
-		rgba(var(--gray), 33%);
+/* Initial typography improvements to reduce chains */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('@fontsource/outfit/files/outfit-latin-400-normal.woff2') format('woff2');
 }
 @font-face {
-	font-family: "Atkinson";
-	src: url("/fonts/atkinson-regular.woff") format("woff");
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url('@fontsource/outfit/files/outfit-latin-700-normal.woff2') format('woff2');
 }
 @font-face {
-	font-family: "Atkinson";
-	src: url("/fonts/atkinson-bold.woff") format("woff");
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
-}
-body {
-	font-family: "Atkinson", sans-serif;
-	margin: 0;
-	padding: 0;
-	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
-	background-size: 100% 600px;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	color: rgb(var(--gray-dark));
-	font-size: 20px;
-	line-height: 1.7;
-}
-main {
-	width: 720px;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 3em 1em;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
-	line-height: 1.2;
-}
-h1 {
-	font-size: 3.052em;
-}
-h2 {
-	font-size: 2.441em;
-}
-h3 {
-	font-size: 1.953em;
-}
-h4 {
-	font-size: 1.563em;
-}
-h5 {
-	font-size: 1.25em;
-}
-strong,
-b {
-	font-weight: 700;
-}
-a {
-	color: var(--accent);
-}
-a:hover {
-	color: var(--accent);
-}
-p {
-	margin-bottom: 1em;
-}
-.prose p {
-	margin-bottom: 2em;
-}
-textarea {
-	width: 100%;
-	font-size: 16px;
-}
-input {
-	font-size: 16px;
-}
-table {
-	width: 100%;
-}
-img {
-	max-width: 100%;
-	height: auto;
-	border-radius: 8px;
-}
-code {
-	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
-}
-pre {
-	padding: 1.5em;
-	border-radius: 8px;
-}
-pre > code {
-	all: unset;
-}
-blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0;
-	font-size: 1.333em;
-}
-hr {
-	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
-}
-@media (max-width: 720px) {
-	body {
-		font-size: 18px;
-	}
-	main {
-		padding: 1em;
-	}
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('@fontsource-variable/inter/files/inter-latin-standard-normal.woff2') format('woff2');
 }
 
-.sr-only {
-	border: 0;
-	padding: 0;
-	margin: 0;
-	position: absolute !important;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
-	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
-	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
-	white-space: nowrap;
+@theme {
+  /* 1. Core Colors */
+  --color-background: #ffffff;
+  --color-foreground: #09090b;
+
+  --color-card: #ffffff;
+  --color-card-foreground: #09090b;
+
+  --color-popover: #ffffff;
+  --color-popover-foreground: #09090b;
+
+  --color-primary: #18181b;
+  --color-primary-foreground: #fafafa;
+
+  --color-secondary: #f4f4f5;
+  --color-secondary-foreground: #18181b;
+
+  --color-muted: #f4f4f5;
+  --color-muted-foreground: #18181b; /* Zinc 900 for absolute contrast compliance */
+
+  --color-accent: #f4f4f5;
+  --color-accent-foreground: #18181b;
+
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #fafafa;
+
+  --color-border: #e4e4e7;
+  --color-input: #e4e4e7;
+  --color-ring: #18181b;
+
+  /* 2. Constants */
+  --font-sans: 'Outfit', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --radius-lg: 0.75rem;
+  --radius-md: calc(0.75rem - 2px);
+  --radius-sm: calc(0.75rem - 4px);
+
+  /* 3. Responsive Scaling (4K & Mobile Optimization) */
+  --breakpoint-3xl: 1920px;
+  --breakpoint-4xl: 2560px;
+}
+
+@layer base {
+  .dark {
+    --color-background: #212737;
+    --color-foreground: #eaedf3;
+    --color-card: #303446; /* Catppuccin Frappe Base */
+    --color-card-foreground: #eaedf3;
+    --color-popover: #303446;
+    --color-popover-foreground: #eaedf3;
+    --color-primary: #f2d5cf; /* Lighter accent for Catppuccin harmony */
+    --color-primary-foreground: #303446;
+    --color-secondary: #292c3c; /* Mantle */
+    --color-secondary-foreground: #eaedf3;
+    --color-muted: #303446;
+    --color-muted-foreground: #d1d5dc;
+    --color-accent: #292c3c;
+    --color-accent-foreground: #eaedf3;
+    --color-destructive: #ef4444;
+    --color-destructive-foreground: #fafafa;
+    --color-border: #494d64; /* Surface 1 */
+    --color-input: #494d64;
+    --color-ring: #f2d5cf;
+  }
+
+  /* Fluid Typography & Scaling */
+  html {
+    color-scheme: light;
+    /* Base font size scales between 16px on mobile and 18px on 4K */
+    font-size: clamp(16px, 0.5vw + 14px, 20px);
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  @media (min-width: 2560px) {
+    html {
+      font-size: 22px; /* Extra boost for 4K */
+    }
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  *::selection {
+    background-color: var(--color-primary) !important;
+    color: var(--color-primary-foreground) !important;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tight font-black;
+    line-height: 1.1;
+  }
+
+  a {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a:hover {
+    color: var(--color-primary);
+  }
+
+  input,
+  textarea,
+  select {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    border-color: var(--color-border);
+  }
+
+  input::placeholder {
+    color: var(--color-muted-foreground);
+    opacity: 0.5;
+  }
+}
+
+@layer utilities {
+  .text-main {
+    color: var(--color-foreground);
+  }
+  .text-muted {
+    color: var(--color-muted-foreground);
+  }
+  .bg-main {
+    background-color: var(--color-background);
+  }
+  .border-main {
+    border-color: var(--color-border);
+  }
+
+  .no-underline {
+    text-decoration: none !important;
+  }
+
+  /* Fluid Container Padding */
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8 xl:px-12 3xl:px-24;
+  }
+}
+
+/* Typography Overrides */
+.prose {
+  --tw-prose-body: var(--color-foreground);
+  --tw-prose-headings: var(--color-foreground);
+  --tw-prose-links: var(--color-foreground);
+  --tw-prose-bold: var(--color-foreground);
+  --tw-prose-counters: var(--color-muted-foreground);
+  --tw-prose-bullets: var(--color-border);
+  --tw-prose-hr: var(--color-border);
+  --tw-prose-quotes: var(--color-foreground);
+  --tw-prose-quote-borders: var(--color-border);
+  --tw-prose-captions: var(--color-muted-foreground);
+  --tw-prose-code: var(--color-foreground);
+  --tw-prose-pre-bg: #f8fafc; /* Subtle off-white for light mode */
+
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+/* Inline code styling */
+.prose code {
+  @apply rounded px-1.5 py-0.5 font-medium font-mono border whitespace-pre-wrap;
+  font-size: 0.875em;
+  background-color: var(--color-secondary);
+  border-color: var(--color-border);
+  color: var(--color-foreground) !important;
+}
+
+.prose code::before,
+.prose code::after {
+  content: none !important;
+}
+
+/* Reset for code blocks */
+.prose pre code,
+.prose .astro-code code {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: inherit !important;
+  color: inherit !important;
+  font-weight: inherit !important;
+  white-space: inherit !important;
+}
+
+.prose pre,
+.prose .astro-code {
+  margin-top: 2.5rem !important;
+  margin-bottom: 2.5rem !important;
+  padding: 1.5rem !important;
+  border-radius: 6px !important;
+  border: 1px solid var(--color-border) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+  /* Shiki will provide the background via --shiki-light-bg/--shiki-dark-bg */
+}
+
+/* Ensure syntax colors switch correctly with the .dark class */
+.shiki span,
+.astro-code span {
+  color: var(--shiki-light);
+}
+
+.dark .shiki span,
+.dark .astro-code span {
+  color: var(--shiki-dark) !important;
+}
+
+.shiki,
+.astro-code {
+  background-color: var(--shiki-light-bg) !important;
+}
+
+.dark .shiki,
+.dark .astro-code {
+  background-color: var(--shiki-dark-bg) !important;
+  border-color: #494d64 !important; /* Catppuccin Surface 1 */
+}
+
+.dark .prose {
+  --tw-prose-body: #d1d5dc;
+  --tw-prose-headings: #eaedf3;
+  --tw-prose-pre-bg: var(--shiki-dark-bg);
+  --tw-prose-links: var(--color-foreground);
+}
+
+/* Heading anchor links */
+.heading-link {
+  opacity: 0;
+  margin-left: -1.5rem;
+  padding-right: 0.5rem;
+  color: var(--color-muted-foreground);
+  text-decoration: none;
+  font-weight: 400;
+  transition: opacity 0.2s ease;
+}
+
+h1:hover .heading-link,
+h2:hover .heading-link,
+h3:hover .heading-link,
+h4:hover .heading-link,
+h5:hover .heading-link,
+h6:hover .heading-link {
+  opacity: 1;
+}
+
+.heading-link:hover {
+  color: var(--color-primary);
 }

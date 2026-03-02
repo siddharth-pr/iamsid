@@ -1,0 +1,138 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "astro",
+  "frontMatter.preview.host": "http://localhost:4321",
+  "frontMatter.content.publicFolder": "public",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "site",
+      "path": "[[workspace]]/site"
+    },
+    {
+      "path": "[[workspace]]/.github/ISSUE_TEMPLATE"
+    },
+    {
+      "path": "[[workspace]]/site/content/about"
+    },
+    {
+      "path": "[[workspace]]/site/content/appearances"
+    },
+    {
+      "path": "[[workspace]]/site/content/posts"
+    },
+    {
+      "path": "[[workspace]]/site/content/projects"
+    },
+    {
+      "title": "iamsid",
+      "path": "[[workspace]]/docs"
+    }
+  ],
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "about",
+      "pageBundle": false,
+      "clearEmpty": true,
+      "fields": [
+        {
+          "name": "title",
+          "type": "string",
+          "single": true,
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "posts",
+      "pageBundle": false,
+      "clearEmpty": true,
+      "fields": [
+        {
+          "name": "title",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "pubDate",
+          "type": "datetime",
+          "default": "{{now}}",
+          "required": true
+        },
+        {
+          "name": "slug",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "updatedDate",
+          "type": "datetime",
+          "default": "{{now}}"
+        },
+        {
+          "name": "tags",
+          "type": "tags",
+          "default": ["others"]
+        },
+        {
+          "name": "featured",
+          "type": "boolean"
+        },
+        {
+          "name": "draft",
+          "type": "draft"
+        },
+        {
+          "name": "ogImage",
+          "type": "image",
+          "isPreviewImage": true
+        },
+        {
+          "name": "canonicalURL",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "showCTA",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "name": "showComments",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "name": "lang",
+          "type": "string",
+          "single": true,
+          "default": "en"
+        },
+        {
+          "name": "series",
+          "type": "fields",
+          "fields": [
+            {
+              "name": "id",
+              "type": "string",
+              "single": true,
+              "required": true
+            },
+            {
+              "name": "order",
+              "type": "number",
+              "required": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "frontMatter.git.enabled": true
+}
