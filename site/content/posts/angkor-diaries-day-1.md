@@ -38,4 +38,3 @@ tags: ['travel']
 <ol>
 <li>Visit <a href="https://en.wikipedia.org/wiki/Angkor">https://en.wikipedia.org/wiki/Angkor</a> <a href="#fnref:1" title="return to article">↩</a></li>
 </ol>
-<p>Day 2: <a href="http://www.iamsid.net/angkor-diaries-day-2">http://www.iamsid.net/angkor-diaries-day-2</a></p>

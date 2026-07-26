@@ -60,8 +60,8 @@ export const SITE: SiteConfig = {
   blogDescription: 'Stories, notes, and reflections from my journey.',
 
   // Homepage post counts
-  featuredPostsCount: 3,
-  latestPostsCount: 3,
+  featuredPostsCount: 10,
+  latestPostsCount: 10,
 
   // CTA (Call-to-Action) block for blog posts
   cta: {
