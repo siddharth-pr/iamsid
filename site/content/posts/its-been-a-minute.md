@@ -1,14 +1,9 @@
 ---
 title: It's been a minute
 pubDate: 2026-07-26
-updatedDate: 2026-07-26
 description: 'i.e., this website took way too long'
-tags:
-  - Meta
-showCTA: true
-showComments: true
-lang: en
-fmContentType: posts
+tags: ['Meta']
+slug: 'its-been-a-minute'
 ---
 
 I had pretty much forgotten about this website, except for the renewal period of the domain name and the ramnode bill at the end of the year. Considering it was set to auto-renew, I checked the email, thought for a while that I need to do something about this and then moved on. This was every December for the last 8 years. I am happy that it didn't expire and the ghost blog setup on my ramnode was still kicking. I figured that this setup isn't helping me out though. It's not that it was cumbersome, just that the blog hosted on ramnode with ghost felt too heavy-handed for something meant to serve much simpler aims. So I had a look around for a personal website setup when I got some spare time earlier this year.
