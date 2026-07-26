@@ -44,7 +44,7 @@ export interface SiteConfig {
 }
 
 export const SITE: SiteConfig = {
-  author: 'Siddharth',
+  author: 'Siddharth P Ramanarayanan',
   desc: 'Personal blog of Siddharth: travel notes, life updates, and technical musings.',
   title: 'iamsid',
   ogImage: 'og.png',
