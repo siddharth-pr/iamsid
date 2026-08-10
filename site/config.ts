@@ -50,7 +50,7 @@ export const SITE: SiteConfig = {
   ogImage: 'og.png',
   lang: 'en-US',
   base: '/',
-  website: 'https://www.iamsid.net',
+  website: 'https://iamsid.net',
   social: {
     linkedin: 'https://www.linkedin.com/in/siddharthpr/',
   },

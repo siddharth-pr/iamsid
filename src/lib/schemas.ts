@@ -15,6 +15,19 @@ export function getWebSiteSchema(url: string) {
   };
 }
 
+const PERSON = {
+  '@type': 'Person',
+  name: SITE.author,
+  alternateName: [
+    'Siddharth Ramanarayanan',
+    'Siddharth Padmanabhan',
+    'Siddharth Padmanabhan R',
+    'Siddharth Padmanabhan Ramanarayanan',
+  ],
+  url: SITE.website,
+  sameAs: Object.values(SITE.social),
+};
+
 export function getBlogPostingSchema(data: {
   title: string;
   description: string;
@@ -31,10 +44,7 @@ export function getBlogPostingSchema(data: {
     description: data.description,
     datePublished: data.pubDate.toISOString(),
     dateModified: data.pubDate.toISOString(),
-    author: {
-      '@type': 'Person',
-      name: SITE.author,
-    },
+    author: PERSON,
     publisher: {
       '@type': 'Organization',
       name: SITE.title,
@@ -53,10 +63,7 @@ export function getBlogPostingSchema(data: {
 export function getPersonSchema() {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: SITE.author,
-    url: SITE.website,
-    sameAs: Object.values(SITE.social),
+    ...PERSON,
   };
 }
 
